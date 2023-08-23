@@ -1,0 +1,11 @@
+//1st digit : 1 = page, 2 = dialog
+//2nd digit : 0 = frontend, 1 = backend
+//3-5 digit : page number
+//6-8 digit : runing number of word in page
+
+//General
+"general_001" = "Please try again later.";
+"general_002" = "OK";
+"general_003" = "Retry";
+"general_004" = "Cancel";
+"general_005" = "Update";
