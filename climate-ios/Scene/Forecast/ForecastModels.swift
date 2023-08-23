@@ -32,4 +32,23 @@ enum Forecast {
             case alert
         }
     }
+    
+    enum FiveDaysWeather {
+        struct Request {
+            let lat: Double
+            let lon: Double
+        }
+        
+        struct Response {
+            let result: UserResult<ForecastWeatherModel>
+        }
+        
+        struct ViewModel {
+            let content: Content<ForecastWeatherModel, ErrorCase>
+        }
+        
+        enum ErrorCase: Error {
+            case alert
+        }
+    }
 }

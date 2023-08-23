@@ -9,6 +9,7 @@
 import UIKit
 
 protocol ForecastDisplayLogic: AnyObject {
+    func displayGetForecastWeather(viewModel: Forecast.FiveDaysWeather.ViewModel)
 }
 
 class ForecastViewController: BaseViewController, ForecastDisplayLogic {
@@ -47,6 +48,7 @@ class ForecastViewController: BaseViewController, ForecastDisplayLogic {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        getForecastWeather()
     }
     
     func setupView() {
@@ -72,5 +74,32 @@ extension ForecastViewController: UITableViewDelegate, UITableViewDataSource {
         }
         cell.setupDataDegree()
         return cell
+    }
+}
+
+// MARK: - ForecastViewController: Request
+extension ForecastViewController {
+    func getForecastWeather() {
+        typealias Request = Forecast.FiveDaysWeather.Request
+        let request: Request = Request(lat: 44.34, lon: 10.99)
+        interactor?.getForecastWeather(request: request)
+    }
+    
+}
+
+// MARK: - ForecastViewController: Display
+extension ForecastViewController {
+    func displayGetForecastWeather(viewModel: Forecast.FiveDaysWeather.ViewModel) {
+        switch viewModel.content {
+        case .loading:
+            startLoading()
+        case .success(let data):
+            stopLoading()
+        case .error(let error):
+            stopLoading()
+            DialogView.showDialog(error: error.customError)
+        default:
+            break
+        }
     }
 }

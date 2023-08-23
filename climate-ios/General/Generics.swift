@@ -7,7 +7,6 @@
 
 import Foundation
 
-typealias JSON = [String: Any]
 typealias completeBlock = () -> Void
 
 public func unwrapped<T>(_ wrapped: T?, with castValue: T) -> T {

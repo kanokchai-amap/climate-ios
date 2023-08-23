@@ -9,9 +9,11 @@
 import UIKit
 
 protocol ClimateDisplayLogic: AnyObject {
+    func displayGetCurrentWeather(viewModel: Climate.GetWeahterByCurrentLocation.ViewModel)
+    func displayGetWeatherByCity(viewModel: Climate.GetWeahterByCity.ViewModel)
 }
 
-class ClimateViewController: UIViewController, ClimateDisplayLogic {
+class ClimateViewController: BaseViewController, ClimateDisplayLogic {
     
     var interactor: ClimateBusinessLogic?
     var router: (ClimateRoutingLogic & ClimateDataPassing)?
@@ -67,6 +69,9 @@ class ClimateViewController: UIViewController, ClimateDisplayLogic {
     private func setupView() {
         chagneDegreeButton.layer.cornerRadius = 10
         searchTextField.delegate = self
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tappedBackgroud))
+        mainLayoutView.addGestureRecognizer(tap)
     }
     
     private func setupDataDegree() {
@@ -82,7 +87,7 @@ class ClimateViewController: UIViewController, ClimateDisplayLogic {
     }
     
     @IBAction private func tappedCurrentLocation(_ sender: UIButton) {
-        
+        getCurrentWeather()
     }
     
     @IBAction private func tappedForecast(_ sender: UIButton) {
@@ -92,6 +97,10 @@ class ClimateViewController: UIViewController, ClimateDisplayLogic {
     @IBAction private func tappedChangDegree(_ sender: UIButton) {
         isCelsius = !isCelsius
         setupDataDegree()
+    }
+    
+    @objc private func tappedBackgroud() {
+        self.dismissKeyboard()
     }
 }
 
@@ -104,7 +113,53 @@ extension ClimateViewController: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         if let city: String = textField.text {
-            print(city)
+            getWeatherByCity()
+        }
+    }
+}
+
+// MARK: - ClimateViewController: Request
+extension ClimateViewController {
+    func getCurrentWeather() {
+        typealias Request = Climate.GetWeahterByCurrentLocation.Request
+        let request: Request = Request(lat: 44.34, lon: 10.99)
+        interactor?.getCurrentWeather(request: request)
+    }
+    
+    func getWeatherByCity() {
+        typealias Request = Climate.GetWeahterByCity.Request
+        let request: Request = Request(q: "London")
+        interactor?.getWeatherByCity(request: request)
+    }
+}
+
+// MARK: - ClimateViewController: Display
+extension ClimateViewController {
+    func displayGetCurrentWeather(viewModel: Climate.GetWeahterByCurrentLocation.ViewModel) {
+        switch viewModel.content {
+        case .loading:
+            self.startLoading()
+        case .success(let data):
+            self.stopLoading()
+        case .error(let error):
+            self.stopLoading()
+            DialogView.showDialog(error: error.customError)
+        default:
+            break
+        }
+    }
+    
+    func displayGetWeatherByCity(viewModel: Climate.GetWeahterByCity.ViewModel) {
+        switch viewModel.content {
+        case .loading:
+            self.startLoading()
+        case .success(let data):
+            self.stopLoading()
+        case .error(let error):
+            self.stopLoading()
+            DialogView.showDialog(error: error.customError)
+        default:
+            break
         }
     }
 }

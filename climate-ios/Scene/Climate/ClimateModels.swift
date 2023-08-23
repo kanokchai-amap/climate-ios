@@ -9,27 +9,40 @@
 enum Climate {
   
     // MARK: Use cases
-  
-//    enum Something {
-//        struct Request {
-//        }
-//        
-//        struct Response {
-//            let result: UserResult<Data>
-//            
-//            struct Data {
-//            }
-//        }
-//        
-//        struct ViewModel {
-//            let content: Content<Data, ErrorCase>
-//            
-//            struct Data {
-//            }
-//        }
-//        
-//        enum ErrorCase: Error {
-//            case alert
-//        }
-//    }
+    enum GetWeahterByCurrentLocation {
+        struct Request {
+            let lat: Double
+            let lon: Double
+        }
+        
+        struct Response {
+            let result: UserResult<WeatherModel>
+        }
+        
+        struct ViewModel {
+            let content: Content<WeatherModel, ErrorCase>
+        }
+        
+        enum ErrorCase: Error {
+            case alert
+        }
+    }
+    
+    enum GetWeahterByCity {
+        struct Request {
+            let q: String
+        }
+        
+        struct Response {
+            let result: UserResult<WeatherModel>
+        }
+        
+        struct ViewModel {
+            let content: Content<WeatherModel, ErrorCase>
+        }
+        
+        enum ErrorCase: Error {
+            case alert
+        }
+    }
 }

@@ -7,10 +7,26 @@
 //
 
 protocol ForecastPresentationLogic {
+    func presenterGetForecastWeather(response: Forecast.FiveDaysWeather.Response)
 }
 
 class ForecastPresenter: ForecastPresentationLogic {
     weak var viewController: ForecastDisplayLogic?
   
     // MARK: Function
+    func presenterGetForecastWeather(response: Forecast.FiveDaysWeather.Response) {
+        typealias ViewModel = Forecast.FiveDaysWeather.ViewModel
+        typealias ErrorCase = Forecast.FiveDaysWeather.ErrorCase
+        let viewModel: ViewModel
+        switch response.result {
+        case .loading:
+            viewModel = ViewModel(content: .loading)
+        case .success(let result):
+            viewModel = ViewModel(content: .success(data: result))
+        case .failure(error: let error):
+            let viewModelError: ViewModelError = ViewModelError(customError: error, case: ErrorCase.alert)
+            viewModel = ViewModel(content: .error(error: viewModelError))
+        }
+        viewController?.displayGetForecastWeather(viewModel: viewModel)
+    }
 }
