@@ -9,19 +9,19 @@
 import UIKit
 
 protocol ClimateRoutingLogic {
-//    func routeToSomewhere()
+    func routeToForecast()
 }
 
 protocol ClimateDataPassing {
     var dataStore: ClimateDataStore? { get }
 }
 
-class ClimateRouter: ClimateRoutingLogic, ClimateDataPassing {
-    weak var viewController: ClimateViewController?
+class ClimateRouter: BaseRouter, ClimateRoutingLogic, ClimateDataPassing {    
     var dataStore: ClimateDataStore?
   
     // MARK: Routing
-  
-//    func routeToSomewhere() {
-//    }
+    func routeToForecast() {
+        let vc: ForecastViewController = StoryboardScene.Forecast.forecastViewController.instantiate()
+        pushViewController(vc)
+    }
 }

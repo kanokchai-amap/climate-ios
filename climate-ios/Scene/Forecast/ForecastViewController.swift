@@ -9,18 +9,18 @@
 import UIKit
 
 protocol ForecastDisplayLogic: AnyObject {
-    func displaySomething(viewModel: Forecast.Something.ViewModel)
 }
 
-class ForecastViewController: BaseViewController {
+class ForecastViewController: BaseViewController, ForecastDisplayLogic {
     
     var interactor: ForecastBusinessLogic?
     var router: (ForecastRoutingLogic & ForecastDataPassing)?
     
     // MARK: IBOutlet
     
-//    @IBOutlet private var nameLabel: UILabel!
-
+    @IBOutlet private var mainLayoutView: UIView!
+    @IBOutlet private var tableView: UITableView!
+    
     // MARK: Object lifecycle
   
     override public func awakeFromNib() {
@@ -46,31 +46,31 @@ class ForecastViewController: BaseViewController {
   
     override func viewDidLoad() {
         super.viewDidLoad()
-        doSomething()
+        setupView()
+    }
+    
+    func setupView() {
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(UINib(nibName: ForecastItemTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: ForecastItemTableViewCell.identifier)
+        tableView.reloadData()
     }
   
     // MARK: Function
-  
-    private func doSomething() {
-        typealias Request = Forecast.Something.Request
-        let request: Request = Request()
-        interactor?.doSomething(request: request)
-    }
 }
 
-extension ForecastViewController: ForecastDisplayLogic {
+// MARK: - ForecastViewController - UITableViewDelegate, UITableViewDataSource
+extension ForecastViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func displaySomething(viewModel: Forecast.Something.ViewModel) {
-        switch viewModel.content {
-        case .loading:
-            startLoading()
-        case .success(let data):
-            stopLoading()
-        case .error(let error):
-            stopLoading()
-            DialogView.showDialog(error: error.customError)
-        default:
-            stopLoading()
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell: ForecastItemTableViewCell = tableView.dequeueReusableCell(withIdentifier: ForecastItemTableViewCell.identifier, for: indexPath) as? ForecastItemTableViewCell else {
+            return UITableViewCell()
         }
+        cell.setupDataDegree()
+        return cell
     }
 }

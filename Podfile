@@ -8,5 +8,6 @@ target 'climate-ios' do
   # Pods for climate-ios
   pod 'Alamofire'
   pod 'SwiftyJSON'
+  pod 'SwiftGen'
 
 end

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B11CD5A12A95BEC500D08032 /* StoryboardScenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11CD59E2A95BEC500D08032 /* StoryboardScenes.swift */; };
+		B11CD5A22A95BEC500D08032 /* StoryboardSegues.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11CD59F2A95BEC500D08032 /* StoryboardSegues.swift */; };
+		B11CD5A32A95BEC500D08032 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11CD5A02A95BEC500D08032 /* Assets.swift */; };
+		B11CD5A52A95D5DF00D08032 /* UserDefaultService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11CD5A42A95D5DF00D08032 /* UserDefaultService.swift */; };
 		B131ECB42A95A8B4001A8B2A /* ForecastItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B131ECB22A95A8B4001A8B2A /* ForecastItemTableViewCell.swift */; };
 		B131ECB52A95A8B4001A8B2A /* ForecastItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B131ECB32A95A8B4001A8B2A /* ForecastItemTableViewCell.xib */; };
 		B131ECBC2A95A901001A8B2A /* ForecastPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B131ECB62A95A901001A8B2A /* ForecastPresenter.swift */; };
@@ -49,6 +53,10 @@
 /* Begin PBXFileReference section */
 		47FE76012A4806C807E17EEF /* Pods-climate-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-climate-ios.release.xcconfig"; path = "Target Support Files/Pods-climate-ios/Pods-climate-ios.release.xcconfig"; sourceTree = "<group>"; };
 		6CB7FAA42DA6AF73947C9114 /* Pods-climate-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-climate-ios.debug.xcconfig"; path = "Target Support Files/Pods-climate-ios/Pods-climate-ios.debug.xcconfig"; sourceTree = "<group>"; };
+		B11CD59E2A95BEC500D08032 /* StoryboardScenes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardScenes.swift; sourceTree = "<group>"; };
+		B11CD59F2A95BEC500D08032 /* StoryboardSegues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardSegues.swift; sourceTree = "<group>"; };
+		B11CD5A02A95BEC500D08032 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
+		B11CD5A42A95D5DF00D08032 /* UserDefaultService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultService.swift; sourceTree = "<group>"; };
 		B131ECB22A95A8B4001A8B2A /* ForecastItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastItemTableViewCell.swift; sourceTree = "<group>"; };
 		B131ECB32A95A8B4001A8B2A /* ForecastItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForecastItemTableViewCell.xib; sourceTree = "<group>"; };
 		B131ECB62A95A901001A8B2A /* ForecastPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastPresenter.swift; sourceTree = "<group>"; };
@@ -136,6 +144,16 @@
 			path = TableViewCell;
 			sourceTree = "<group>";
 		};
+		B131ECC52A95BDBB001A8B2A /* Generate */ = {
+			isa = PBXGroup;
+			children = (
+				B11CD5A02A95BEC500D08032 /* Assets.swift */,
+				B11CD59E2A95BEC500D08032 /* StoryboardScenes.swift */,
+				B11CD59F2A95BEC500D08032 /* StoryboardSegues.swift */,
+			);
+			path = Generate;
+			sourceTree = "<group>";
+		};
 		B175D89F2A9509EC0084EE37 = {
 			isa = PBXGroup;
 			children = (
@@ -157,10 +175,11 @@
 		B175D8AA2A9509EC0084EE37 /* climate-ios */ = {
 			isa = PBXGroup;
 			children = (
+				B131ECC52A95BDBB001A8B2A /* Generate */,
+				B175D9B62A95A6550084EE37 /* Tools */,
 				B131ECAE2A95A867001A8B2A /* Cell */,
 				B175D9E22A95A7040084EE37 /* Scene */,
 				B175D9CC2A95A6560084EE37 /* Localizable.strings */,
-				B175D9B62A95A6550084EE37 /* Tools */,
 				B175D8AB2A9509EC0084EE37 /* AppDelegate.swift */,
 				B175D8AD2A9509EC0084EE37 /* SceneDelegate.swift */,
 				B175D8AF2A9509EC0084EE37 /* ViewController.swift */,
@@ -188,6 +207,7 @@
 				B175D9C12A95A6550084EE37 /* CustomError.swift */,
 				B175D9C22A95A6550084EE37 /* Generics.swift */,
 				B175D9C32A95A6550084EE37 /* Enum.swift */,
+				B11CD5A42A95D5DF00D08032 /* UserDefaultService.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -241,6 +261,7 @@
 				B175D8A52A9509EC0084EE37 /* Frameworks */,
 				B175D8A62A9509EC0084EE37 /* Resources */,
 				B1F7963F2D4F80E7A438E9B1 /* [CP] Embed Pods Frameworks */,
+				B131ECC42A95BC97001A8B2A /* SwiftGen Script */,
 			);
 			buildRules = (
 			);
@@ -324,6 +345,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B131ECC42A95BC97001A8B2A /* SwiftGen Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "SwiftGen Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [[ -f \"${PODS_ROOT}/SwiftGen/bin/swiftgen\" ]]; then\n  \"${PODS_ROOT}/SwiftGen/bin/swiftgen\"\nelse\n  echo \"warning: SwiftGen is not installed. Run 'pod install --repo-update' to install it.\"\nfi \n";
+		};
 		B1F7963F2D4F80E7A438E9B1 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -349,6 +388,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B175D9CD2A95A6560084EE37 /* StrokeColorAnimation.swift in Sources */,
+				B11CD5A52A95D5DF00D08032 /* UserDefaultService.swift in Sources */,
 				B131ECC02A95A901001A8B2A /* ForecastViewController.swift in Sources */,
 				B175D9D02A95A6560084EE37 /* RotationAnimation.swift in Sources */,
 				B131ECBF2A95A901001A8B2A /* ForecastModels.swift in Sources */,
@@ -362,6 +402,7 @@
 				B131ECBD2A95A901001A8B2A /* ForecastWorker.swift in Sources */,
 				B131ECB42A95A8B4001A8B2A /* ForecastItemTableViewCell.swift in Sources */,
 				B175D9D42A95A6560084EE37 /* UIView+Helper.swift in Sources */,
+				B11CD5A22A95BEC500D08032 /* StoryboardSegues.swift in Sources */,
 				B175D9D52A95A6560084EE37 /* ProgressShapeLayer.swift in Sources */,
 				B175D9D72A95A6560084EE37 /* CustomError.swift in Sources */,
 				B175D9D62A95A6560084EE37 /* BaseRouter.swift in Sources */,
@@ -373,10 +414,12 @@
 				B175D9D12A95A6560084EE37 /* ProgressView.swift in Sources */,
 				B175D9DD2A95A6560084EE37 /* ClimatePresenter.swift in Sources */,
 				B175D9D82A95A6560084EE37 /* Generics.swift in Sources */,
+				B11CD5A32A95BEC500D08032 /* Assets.swift in Sources */,
 				B175D8AE2A9509EC0084EE37 /* SceneDelegate.swift in Sources */,
 				B131ECBE2A95A901001A8B2A /* ForecastRouter.swift in Sources */,
 				B175D9CF2A95A6560084EE37 /* BaseViewController.swift in Sources */,
 				B175D9DE2A95A6560084EE37 /* ClimateViewController.swift in Sources */,
+				B11CD5A12A95BEC500D08032 /* StoryboardScenes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -528,7 +571,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "climate-ios/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = Climate.storyboard;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -557,7 +600,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "climate-ios/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = Climate.storyboard;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
