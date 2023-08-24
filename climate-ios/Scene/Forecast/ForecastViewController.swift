@@ -58,10 +58,31 @@ class ForecastViewController: BaseViewController, ForecastDisplayLogic {
     
     // MARK: Function
     func setupView() {
+        self.navigationItem.title = "forecast_001".localize()
+        
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0.0
+        } else {
+            // Fallback on earlier versions
+        }
+        
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib(nibName: ForecastItemTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: ForecastItemTableViewCell.identifier)
+        tableView.register(UINib(nibName: HeaderSectionView.identifier, bundle: nil), forHeaderFooterViewReuseIdentifier: HeaderSectionView.identifier)
         tableView.reloadData()
+    }
+    
+    func handleData() {
+        let list: [WeatherModel] = unwrapped(forecastWeatherData.list, with: [])
+        var listArray: [[WeatherModel]] = [[]]
+        
+        for i in list {
+            let fullDataTime: String = unwrapped(i.dt_txt, with: "")
+            let arr = fullDataTime.split {$0 == " "}
+            let strDate: String = String(arr[0])
+            
+        }
     }
 }
 
@@ -80,6 +101,21 @@ extension ForecastViewController: UITableViewDelegate, UITableViewDataSource {
         cell.forecastWeatherData = forecastWeatherData
         cell.setupData()
         return cell
+    }
+    
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: HeaderSectionView.identifier) as? HeaderSectionView else {
+//            return UIView()
+//        }
+//        return headerView
+//    }
+    
+    @objc private func explanTapped(sender: UIGestureRecognizer) {
+        if let indexSecion: Int = sender.view?.tag {
+//            helpCenterData[indexSecion].explan = !helpCenterData[indexSecion].explan
+//            let section: IndexSet = IndexSet.init(integer: indexSecion)
+//            tableView.reloadSections(section, with: .automatic)
+        }
     }
 }
 

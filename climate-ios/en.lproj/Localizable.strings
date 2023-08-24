@@ -9,3 +9,7 @@
 "general_003" = "Retry";
 "general_004" = "Cancel";
 "general_005" = "Update";
+
+
+// Forecast
+"forecast_001" = "5 Days Forecast Weather";

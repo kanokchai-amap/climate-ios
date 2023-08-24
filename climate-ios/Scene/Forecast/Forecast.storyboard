@@ -20,14 +20,14 @@
                                 <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="0ia-K1-hor">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="759"/>
+                                        <rect key="frame" x="0.0" y="24" width="393" height="735"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="0ia-K1-hor" secondAttribute="bottom" id="2H4-bz-K14"/>
-                                    <constraint firstItem="0ia-K1-hor" firstAttribute="top" secondItem="r8O-bU-6H4" secondAttribute="top" id="7Wq-Se-rBl"/>
+                                    <constraint firstItem="0ia-K1-hor" firstAttribute="top" secondItem="r8O-bU-6H4" secondAttribute="top" constant="24" id="7Wq-Se-rBl"/>
                                     <constraint firstAttribute="trailing" secondItem="0ia-K1-hor" secondAttribute="trailing" id="D6J-CL-V16"/>
                                     <constraint firstItem="0ia-K1-hor" firstAttribute="leading" secondItem="r8O-bU-6H4" secondAttribute="leading" id="Lt4-Nn-vuq"/>
                                 </constraints>

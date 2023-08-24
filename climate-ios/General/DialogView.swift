@@ -44,6 +44,11 @@ class DialogView {
         alert.preferredAction = action
         if let showVc: UIViewController = vc {
             showVc.present(alert, animated: true)
+        } else if let topView: UIViewController = UIApplication.shared.getTopView() {
+            if topView is UIAlertController {
+                return
+            }
+            topView.present(alert, animated: true)
         }
     }
 }

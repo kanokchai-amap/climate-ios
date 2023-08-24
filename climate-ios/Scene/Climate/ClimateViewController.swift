@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 protocol ClimateDisplayLogic: AnyObject {
     func displayGetCurrentWeather(viewModel: Climate.GetWeahterByCurrentLocation.ViewModel)
@@ -37,6 +38,9 @@ class ClimateViewController: BaseViewController, ClimateDisplayLogic {
     
     var isCelsius: Bool = unwrapped(UserDefaultService.getIsCelsius(), with: true)
     var weatherData: WeatherModel = WeatherModel(from: [:])
+    let locationManager = CLLocationManager()
+    var lat: Double = 0
+    var lon: Double = 0
     
     // MARK: Object lifecycle
   
@@ -64,7 +68,7 @@ class ClimateViewController: BaseViewController, ClimateDisplayLogic {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        getCurrentWeather()
+        setupLocation()
     }
   
     // MARK: Function
@@ -74,6 +78,14 @@ class ClimateViewController: BaseViewController, ClimateDisplayLogic {
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tappedBackgroud))
         mainLayoutView.addGestureRecognizer(tap)
+    }
+    
+    private func setupLocation() {
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocation()
+    
+        getCurrentWeather()
     }
     
     private func setupData() {
@@ -88,16 +100,28 @@ class ClimateViewController: BaseViewController, ClimateDisplayLogic {
         if isCelsius {
             degreeLabel.text = "\(temp)°C"
             minMaxDegreeLabel.text = "H: \(temp_max)°C, L:\(temp_min)°C"
+            chagneDegreeButton.setTitle("Change Unit to Fahrenheit", for: .normal)
+
         } else {
             degreeLabel.text = "\(temp)°F"
             minMaxDegreeLabel.text = "H: \(temp_max)°F, L:\(temp_min)°F"
+            chagneDegreeButton.setTitle("Change Unit to Celsiuis", for: .normal)
         }
         
         humidityLabel.text = "Humidity: \(humidity)"
+        
     }
     
     @IBAction private func tappedCurrentLocation(_ sender: UIButton) {
-        getCurrentWeather()
+        if CLLocationManager.authorizationStatus() == .authorizedAlways || CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+            searchTextField.text = ""
+            getCurrentWeather()
+        } else {
+            guard let appSettingURl = URL(string: UIApplication.openSettingsURLString) else { return }
+            if UIApplication.shared.canOpenURL(appSettingURl) {
+                UIApplication.shared.open(appSettingURl, options: [:], completionHandler: nil)
+            }
+        }
     }
     
     @IBAction private func tappedForecast(_ sender: UIButton) {
@@ -122,7 +146,11 @@ extension ClimateViewController: UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        getWeatherByCity()
+        if let city: String = searchTextField.text {
+            if !city.isEmpty {
+                getWeatherByCity()
+            }
+        }
     }
 }
 
@@ -130,7 +158,9 @@ extension ClimateViewController: UITextFieldDelegate {
 extension ClimateViewController {
     func getCurrentWeather() {
         typealias Request = Climate.GetWeahterByCurrentLocation.Request
-        let request: Request = Request(lat: 44.34, lon: 10.99)
+        lat = unwrapped(locationManager.location?.coordinate.latitude, with: 0)
+        lon = unwrapped(locationManager.location?.coordinate.longitude, with: 0)
+        let request: Request = Request(lat: lat, lon: lon)
         interactor?.getCurrentWeather(request: request)
     }
     
@@ -149,7 +179,7 @@ extension ClimateViewController {
     
     func routeToForecast() {
         typealias Request = Climate.RouteToForecast.Request
-        let request: Request = Request(lat: 44.34, lon: 10.99)
+        let request: Request = Request(lat: lat, lon: lon)
         interactor?.routeToForecast(request: request)
         
     }
@@ -180,6 +210,8 @@ extension ClimateViewController {
         case .success(let data):
             self.stopLoading()
             weatherData = data
+            lat = unwrapped(weatherData.coord?.lat, with: 0)
+            lon = unwrapped(weatherData.coord?.lon, with: 0)
             setupData()
         case .error(let error):
             self.stopLoading()
@@ -201,5 +233,26 @@ extension ClimateViewController {
     
     func displayRouteToForecast(viewModel: Climate.RouteToForecast.ViewModel) {
         self.router?.routeToForecast()
+    }
+}
+
+// MARK: - ClimateViewController: CLLocationManagerDelegate
+extension ClimateViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last {
+            locationManager.stopUpdatingLocation()
+            self.lat = location.coordinate.latitude
+            self.lon = location.coordinate.longitude
+            getCurrentWeather()
+            print("get current location")
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        setupLocation()
     }
 }
