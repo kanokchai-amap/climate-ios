@@ -20,6 +20,7 @@ class ForecastItemTableViewCell: UITableViewCell {
     
     let isCelsius: Bool = unwrapped(UserDefaultService.getIsCelsius(), with: false)
     var forecastWeatherData: ForecastWeatherModel = ForecastWeatherModel(from: [:])
+    var weatherData: WeatherModel = WeatherModel(from: [:])
     var indexPath: IndexPath = IndexPath()
 
     static var identifier: String {
@@ -45,7 +46,6 @@ class ForecastItemTableViewCell: UITableViewCell {
     }
     
     func setupData() {
-        let weatherData: WeatherModel = unwrapped(forecastWeatherData.list?[indexPath.row], with: WeatherModel(from: [:]))
         let cityName: String = unwrapped(forecastWeatherData.city?.name, with: "")
         
         let temp: Int = Int(unwrapped(weatherData.main?.temp, with: 0))

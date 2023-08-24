@@ -100,12 +100,12 @@ class ClimateViewController: BaseViewController, ClimateDisplayLogic {
         if isCelsius {
             degreeLabel.text = "\(temp)°C"
             minMaxDegreeLabel.text = "H: \(temp_max)°C, L:\(temp_min)°C"
-            chagneDegreeButton.setTitle("Change Unit to Fahrenheit", for: .normal)
+            chagneDegreeButton.setTitle("climate_001".localize(), for: .normal)
 
         } else {
             degreeLabel.text = "\(temp)°F"
             minMaxDegreeLabel.text = "H: \(temp_max)°F, L:\(temp_min)°F"
-            chagneDegreeButton.setTitle("Change Unit to Celsiuis", for: .normal)
+            chagneDegreeButton.setTitle("climate_002".localize(), for: .normal)
         }
         
         humidityLabel.text = "Humidity: \(humidity)"

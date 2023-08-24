@@ -65,4 +65,20 @@ enum Forecast {
             let lon: Double
         }
     }
+    
+    enum FilterForecastWeatherData {
+        struct Request {
+            let forecastWeatherData: ForecastWeatherModel
+        }
+        
+        struct Response {
+            let listWeaherDays: [[String: Any]]
+            let days: [String]
+        }
+        
+        struct ViewModel {
+            let listWeaherDays: [[String: Any]]
+            let days: [String]
+        }
+    }
 }

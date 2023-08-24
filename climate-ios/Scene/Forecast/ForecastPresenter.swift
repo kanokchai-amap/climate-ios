@@ -9,6 +9,7 @@
 protocol ForecastPresentationLogic {
     func presenterGetForecastWeather(response: Forecast.FiveDaysWeather.Response)
     func presenterGetDataStore(resposne: Forecast.GetDataStore.Response)
+    func presenterFilterForecastWeather(response: Forecast.FilterForecastWeatherData.Response)
 }
 
 class ForecastPresenter: ForecastPresentationLogic {
@@ -35,5 +36,11 @@ class ForecastPresenter: ForecastPresentationLogic {
         typealias ViewModel = Forecast.GetDataStore.ViewModel
         let viewModel: ViewModel = ViewModel(lat: resposne.lat, lon: resposne.lon)
         self.viewController?.displayGetDataStore(viewModel: viewModel)
+    }
+    
+    func presenterFilterForecastWeather(response: Forecast.FilterForecastWeatherData.Response) {
+        typealias ViewModel = Forecast.FilterForecastWeatherData.ViewModel
+        let viewModel: ViewModel = ViewModel(listWeaherDays: response.listWeaherDays, days: response.days)
+        self.viewController?.displayFilterForecaseWeather(viewModel: viewModel)
     }
 }

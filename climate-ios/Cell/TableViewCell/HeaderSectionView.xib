@@ -18,8 +18,8 @@
                     <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23/08/2565 10:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LFg-b1-HWw">
-                            <rect key="frame" x="24" y="11.666666666666664" width="353" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <rect key="frame" x="24" y="10" width="353" height="24"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -41,6 +41,7 @@
                         <constraint firstAttribute="bottom" secondItem="qln-Rt-veS" secondAttribute="bottom" id="J7u-2B-FLO"/>
                         <constraint firstItem="wOM-4v-dKD" firstAttribute="top" secondItem="Bbc-tC-sPM" secondAttribute="top" id="Sje-ay-pwN"/>
                         <constraint firstItem="LFg-b1-HWw" firstAttribute="leading" secondItem="Bbc-tC-sPM" secondAttribute="leading" constant="24" id="VoE-d1-hC8"/>
+                        <constraint firstAttribute="height" constant="44" id="Y67-hs-1pZ"/>
                         <constraint firstItem="qln-Rt-veS" firstAttribute="leading" secondItem="Bbc-tC-sPM" secondAttribute="leading" constant="24" id="bDr-xf-duB"/>
                         <constraint firstAttribute="trailing" secondItem="LFg-b1-HWw" secondAttribute="trailing" constant="16" id="d0X-3b-3os"/>
                         <constraint firstAttribute="trailing" secondItem="qln-Rt-veS" secondAttribute="trailing" constant="24" id="dah-zx-1eh"/>

@@ -11,5 +11,10 @@
 "general_005" = "Update";
 
 
+// Climate
+"climate_001" = "Change Unit to Fahrenheit";
+"climate_002" = "Change Unit to Celsius";
+
+
 // Forecast
 "forecast_001" = "5 Days Forecast Weather";

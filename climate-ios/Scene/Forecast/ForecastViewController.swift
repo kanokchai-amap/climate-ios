@@ -11,6 +11,7 @@ import UIKit
 protocol ForecastDisplayLogic: AnyObject {
     func displayGetForecastWeather(viewModel: Forecast.FiveDaysWeather.ViewModel)
     func displayGetDataStore(viewModel: Forecast.GetDataStore.ViewModel)
+    func displayFilterForecaseWeather(viewModel: Forecast.FilterForecastWeatherData.ViewModel)
 }
 
 class ForecastViewController: BaseViewController, ForecastDisplayLogic {
@@ -26,6 +27,8 @@ class ForecastViewController: BaseViewController, ForecastDisplayLogic {
     var forecastWeatherData: ForecastWeatherModel = ForecastWeatherModel(from: [:])
     var lat: Double = 0
     var lon: Double = 0
+    var listWeaherDays: [[String: Any]] = []
+    var days: [String] = []
     
     // MARK: Object lifecycle
   
@@ -72,25 +75,18 @@ class ForecastViewController: BaseViewController, ForecastDisplayLogic {
         tableView.register(UINib(nibName: HeaderSectionView.identifier, bundle: nil), forHeaderFooterViewReuseIdentifier: HeaderSectionView.identifier)
         tableView.reloadData()
     }
-    
-    func handleData() {
-        let list: [WeatherModel] = unwrapped(forecastWeatherData.list, with: [])
-        var listArray: [[WeatherModel]] = [[]]
-        
-        for i in list {
-            let fullDataTime: String = unwrapped(i.dt_txt, with: "")
-            let arr = fullDataTime.split {$0 == " "}
-            let strDate: String = String(arr[0])
-            
-        }
-    }
 }
 
 // MARK: - ForecastViewController - UITableViewDelegate, UITableViewDataSource
 extension ForecastViewController: UITableViewDelegate, UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return listWeaherDays.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return unwrapped(forecastWeatherData.list?.count, with: 0)
+        let count: Int = unwrapped(listWeaherDays[section].first?.value as? [WeatherModel], with: []).count
+        return count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -98,24 +94,23 @@ extension ForecastViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         cell.indexPath = indexPath
+        let listWeather: [WeatherModel] = unwrapped(listWeaherDays[indexPath.section].first?.value as? [WeatherModel], with: [])
+        cell.weatherData = listWeather[indexPath.row]
         cell.forecastWeatherData = forecastWeatherData
         cell.setupData()
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: HeaderSectionView.identifier) as? HeaderSectionView else {
-//            return UIView()
-//        }
-//        return headerView
-//    }
-    
-    @objc private func explanTapped(sender: UIGestureRecognizer) {
-        if let indexSecion: Int = sender.view?.tag {
-//            helpCenterData[indexSecion].explan = !helpCenterData[indexSecion].explan
-//            let section: IndexSet = IndexSet.init(integer: indexSecion)
-//            tableView.reloadSections(section, with: .automatic)
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: HeaderSectionView.identifier) as? HeaderSectionView else {
+            return UIView()
         }
+        headerView.headerLabel.text = days[section]
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 44
     }
 }
 
@@ -132,6 +127,12 @@ extension ForecastViewController {
         let request: Request = Request()
         interactor?.getDataStore(request: request)
     }
+    
+    func filterForecastWeather() {
+        typealias Request = Forecast.FilterForecastWeatherData.Request
+        let request: Request = Request(forecastWeatherData: forecastWeatherData)
+        interactor?.filterForecastWeather(request: request)
+    }
 }
 
 // MARK: - ForecastViewController: Display
@@ -143,7 +144,7 @@ extension ForecastViewController {
         case .success(let data):
             stopLoading()
             forecastWeatherData = data
-            tableView.reloadData()
+            filterForecastWeather()
         case .error(let error):
             stopLoading()
             DialogView.showDialog(error: error.customError)
@@ -156,5 +157,11 @@ extension ForecastViewController {
         lat = viewModel.lat
         lon = viewModel.lon
         getForecastWeather()
+    }
+    
+    func displayFilterForecaseWeather(viewModel: Forecast.FilterForecastWeatherData.ViewModel) {
+        listWeaherDays = viewModel.listWeaherDays
+        days = viewModel.days
+        tableView.reloadData()
     }
 }

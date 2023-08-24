@@ -59,8 +59,26 @@
 		B175D9DE2A95A6560084EE37 /* ClimateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B175D9C92A95A6550084EE37 /* ClimateViewController.swift */; };
 		B175D9DF2A95A6560084EE37 /* ClimateInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B175D9CA2A95A6550084EE37 /* ClimateInteractor.swift */; };
 		B175D9E02A95A6560084EE37 /* Climate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B175D9CB2A95A6550084EE37 /* Climate.storyboard */; };
+		B1EA9A662A97B34900369523 /* climate_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EA9A652A97B34900369523 /* climate_iosTests.swift */; };
+		B1EA9A6D2A97B37C00369523 /* DataAssertResultState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EA9A6C2A97B37C00369523 /* DataAssertResultState.swift */; };
+		B1EA9A702A97B3D100369523 /* ClimateTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EA9A6F2A97B3D100369523 /* ClimateTest.swift */; };
+		B1EA9A722A97B3E500369523 /* ClimateWorkerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EA9A712A97B3E500369523 /* ClimateWorkerSpy.swift */; };
+		B1EA9A742A97B3F700369523 /* ClimatePresenterSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EA9A732A97B3F700369523 /* ClimatePresenterSpy.swift */; };
+		B1EA9A772A97B42700369523 /* ForecastTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EA9A762A97B42700369523 /* ForecastTest.swift */; };
+		B1EA9A792A97B43600369523 /* ForecastWorkerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EA9A782A97B43600369523 /* ForecastWorkerSpy.swift */; };
+		B1EA9A7B2A97B44A00369523 /* ForecastPresenterSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EA9A7A2A97B44A00369523 /* ForecastPresenterSpy.swift */; };
 		F8EC0A351394550AC3574F42 /* Pods_climate_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3469871571DD6EEE011885B /* Pods_climate_ios.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B1EA9A672A97B34900369523 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B175D8A02A9509EC0084EE37 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B175D8A72A9509EC0084EE37;
+			remoteInfo = "climate-ios";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		47FE76012A4806C807E17EEF /* Pods-climate-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-climate-ios.release.xcconfig"; path = "Target Support Files/Pods-climate-ios/Pods-climate-ios.release.xcconfig"; sourceTree = "<group>"; };
@@ -119,6 +137,15 @@
 		B175D9C92A95A6550084EE37 /* ClimateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClimateViewController.swift; sourceTree = "<group>"; };
 		B175D9CA2A95A6550084EE37 /* ClimateInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClimateInteractor.swift; sourceTree = "<group>"; };
 		B175D9CB2A95A6550084EE37 /* Climate.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Climate.storyboard; sourceTree = "<group>"; };
+		B1EA9A632A97B34800369523 /* climate-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "climate-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1EA9A652A97B34900369523 /* climate_iosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = climate_iosTests.swift; sourceTree = "<group>"; };
+		B1EA9A6C2A97B37C00369523 /* DataAssertResultState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAssertResultState.swift; sourceTree = "<group>"; };
+		B1EA9A6F2A97B3D100369523 /* ClimateTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimateTest.swift; sourceTree = "<group>"; };
+		B1EA9A712A97B3E500369523 /* ClimateWorkerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimateWorkerSpy.swift; sourceTree = "<group>"; };
+		B1EA9A732A97B3F700369523 /* ClimatePresenterSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimatePresenterSpy.swift; sourceTree = "<group>"; };
+		B1EA9A762A97B42700369523 /* ForecastTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastTest.swift; sourceTree = "<group>"; };
+		B1EA9A782A97B43600369523 /* ForecastWorkerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastWorkerSpy.swift; sourceTree = "<group>"; };
+		B1EA9A7A2A97B44A00369523 /* ForecastPresenterSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastPresenterSpy.swift; sourceTree = "<group>"; };
 		B3469871571DD6EEE011885B /* Pods_climate_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_climate_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -128,6 +155,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8EC0A351394550AC3574F42 /* Pods_climate_ios.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1EA9A602A97B34800369523 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,6 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				B175D8AA2A9509EC0084EE37 /* climate-ios */,
+				B1EA9A642A97B34900369523 /* climate-iosTests */,
 				B175D8A92A9509EC0084EE37 /* Products */,
 				0F8B5B8489EAB9D7A2842C67 /* Pods */,
 				9F674783857786A03BD1782F /* Frameworks */,
@@ -252,6 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				B175D8A82A9509EC0084EE37 /* climate-ios.app */,
+				B1EA9A632A97B34800369523 /* climate-iosTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -333,6 +369,37 @@
 			path = Forecast;
 			sourceTree = "<group>";
 		};
+		B1EA9A642A97B34900369523 /* climate-iosTests */ = {
+			isa = PBXGroup;
+			children = (
+				B1EA9A752A97B3FE00369523 /* ForecastTest */,
+				B1EA9A6E2A97B39D00369523 /* ClimateTest */,
+				B1EA9A652A97B34900369523 /* climate_iosTests.swift */,
+				B1EA9A6C2A97B37C00369523 /* DataAssertResultState.swift */,
+			);
+			path = "climate-iosTests";
+			sourceTree = "<group>";
+		};
+		B1EA9A6E2A97B39D00369523 /* ClimateTest */ = {
+			isa = PBXGroup;
+			children = (
+				B1EA9A6F2A97B3D100369523 /* ClimateTest.swift */,
+				B1EA9A712A97B3E500369523 /* ClimateWorkerSpy.swift */,
+				B1EA9A732A97B3F700369523 /* ClimatePresenterSpy.swift */,
+			);
+			path = ClimateTest;
+			sourceTree = "<group>";
+		};
+		B1EA9A752A97B3FE00369523 /* ForecastTest */ = {
+			isa = PBXGroup;
+			children = (
+				B1EA9A762A97B42700369523 /* ForecastTest.swift */,
+				B1EA9A782A97B43600369523 /* ForecastWorkerSpy.swift */,
+				B1EA9A7A2A97B44A00369523 /* ForecastPresenterSpy.swift */,
+			);
+			path = ForecastTest;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -356,6 +423,24 @@
 			productReference = B175D8A82A9509EC0084EE37 /* climate-ios.app */;
 			productType = "com.apple.product-type.application";
 		};
+		B1EA9A622A97B34800369523 /* climate-iosTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B1EA9A692A97B34900369523 /* Build configuration list for PBXNativeTarget "climate-iosTests" */;
+			buildPhases = (
+				B1EA9A5F2A97B34800369523 /* Sources */,
+				B1EA9A602A97B34800369523 /* Frameworks */,
+				B1EA9A612A97B34800369523 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B1EA9A682A97B34900369523 /* PBXTargetDependency */,
+			);
+			name = "climate-iosTests";
+			productName = "climate-iosTests";
+			productReference = B1EA9A632A97B34800369523 /* climate-iosTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -368,6 +453,10 @@
 				TargetAttributes = {
 					B175D8A72A9509EC0084EE37 = {
 						CreatedOnToolsVersion = 14.3.1;
+					};
+					B1EA9A622A97B34800369523 = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = B175D8A72A9509EC0084EE37;
 					};
 				};
 			};
@@ -385,6 +474,7 @@
 			projectRoot = "";
 			targets = (
 				B175D8A72A9509EC0084EE37 /* climate-ios */,
+				B1EA9A622A97B34800369523 /* climate-iosTests */,
 			);
 		};
 /* End PBXProject section */
@@ -402,6 +492,13 @@
 				B175D8B52A9509EE0084EE37 /* Assets.xcassets in Resources */,
 				B175D8B32A9509EC0084EE37 /* Main.storyboard in Resources */,
 				B159554F2A972C4C0049A5FB /* HeaderSectionView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1EA9A612A97B34800369523 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,7 +616,30 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B1EA9A5F2A97B34800369523 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1EA9A7B2A97B44A00369523 /* ForecastPresenterSpy.swift in Sources */,
+				B1EA9A772A97B42700369523 /* ForecastTest.swift in Sources */,
+				B1EA9A702A97B3D100369523 /* ClimateTest.swift in Sources */,
+				B1EA9A742A97B3F700369523 /* ClimatePresenterSpy.swift in Sources */,
+				B1EA9A792A97B43600369523 /* ForecastWorkerSpy.swift in Sources */,
+				B1EA9A6D2A97B37C00369523 /* DataAssertResultState.swift in Sources */,
+				B1EA9A722A97B3E500369523 /* ClimateWorkerSpy.swift in Sources */,
+				B1EA9A662A97B34900369523 /* climate_iosTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B1EA9A682A97B34900369523 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B175D8A72A9509EC0084EE37 /* climate-ios */;
+			targetProxy = B1EA9A672A97B34900369523 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		B159554B2A971E3B0049A5FB /* Localizable.strings */ = {
@@ -678,7 +798,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -707,7 +827,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -718,6 +838,44 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B1EA9A6A2A97B34900369523 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5ZM3H4Z4WH;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.climate-iosTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/climate-ios.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/climate-ios";
+			};
+			name = Debug;
+		};
+		B1EA9A6B2A97B34900369523 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5ZM3H4Z4WH;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.climate-iosTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/climate-ios.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/climate-ios";
 			};
 			name = Release;
 		};
@@ -738,6 +896,15 @@
 			buildConfigurations = (
 				B175D8BD2A9509EE0084EE37 /* Debug */,
 				B175D8BE2A9509EE0084EE37 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B1EA9A692A97B34900369523 /* Build configuration list for PBXNativeTarget "climate-iosTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1EA9A6A2A97B34900369523 /* Debug */,
+				B1EA9A6B2A97B34900369523 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

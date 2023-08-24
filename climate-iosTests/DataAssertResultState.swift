@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+class DataAssertResultState {
+    var callLoading: Int = 0
+    var callSuccess: Int = 0
+    var callError: Int = 0
+}
