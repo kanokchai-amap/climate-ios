@@ -100,9 +100,10 @@
                 <outlet property="cityLabel" destination="bJj-ix-2Li" id="JxO-V3-YBh"/>
                 <outlet property="dateTimeLabel" destination="A3h-hO-kip" id="icG-G0-y58"/>
                 <outlet property="degreeLabel" destination="L1G-cr-Sr9" id="6gA-cv-aRK"/>
+                <outlet property="humidityLabel" destination="sNj-Ah-11o" id="nd9-De-YmE"/>
                 <outlet property="mainLayoutView" destination="63Y-We-2V9" id="eHE-aY-lYP"/>
                 <outlet property="minMaxDegreeLabel" destination="ieT-Va-Sek" id="pPy-Uf-TIS"/>
-                <outlet property="weatherLabel" destination="sNj-Ah-11o" id="09b-By-se6"/>
+                <outlet property="weatherImage" destination="Ic3-nC-fn3" id="qfR-bP-qlw"/>
             </connections>
             <point key="canvasLocation" x="176.33587786259542" y="23.591549295774648"/>
         </tableViewCell>

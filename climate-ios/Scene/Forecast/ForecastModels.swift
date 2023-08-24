@@ -51,4 +51,18 @@ enum Forecast {
             case alert
         }
     }
+    
+    enum GetDataStore {
+        struct Request {}
+        
+        struct Response {
+            let lat: Double
+            let lon: Double
+        }
+        
+        struct ViewModel {
+            let lat: Double
+            let lon: Double
+        }
+    }
 }

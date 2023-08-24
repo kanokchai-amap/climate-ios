@@ -15,8 +15,19 @@ protocol WeatherWorkerLogic {
 }
 
 class WeatherWorker: WeatherWorkerLogic {
+    
+    func getUnits() -> String {
+        let isClesius: Bool = unwrapped(UserDefaultService.getIsCelsius(), with: true)
+        if isClesius {
+            return "metric"
+        } else {
+            return "imperial"
+        }
+    }
+    
     func getCurrentWeather(lat: String, lon: String, onSuccess: @escaping (WeatherModel) -> Void, onError: @escaping (CustomError) -> Void) {
-        APIClient.shared.request(api: .getCurrentWeather(lat: lat, lon: lon, appId: AppConfig.apiKey, units: "metric")) { json in
+        let units: String = self.getUnits()
+        APIClient.shared.request(api: .getCurrentWeather(lat: lat, lon: lon, appId: AppConfig.apiKey, units: units)) { json in
             if let jsonData: [String: Any] = json.rawValue as? [String: Any] {
                 onSuccess(WeatherModel(from: jsonData))
             } else {
@@ -28,7 +39,8 @@ class WeatherWorker: WeatherWorkerLogic {
     }
     
     func getForecastWeather(lat: String, lon: String, onSuccess: @escaping (ForecastWeatherModel) -> Void, onError: @escaping (CustomError) -> Void) {
-        APIClient.shared.request(api: .getForecastWeather(lat: lat, lon: lon, appId: AppConfig.apiKey, units: "metric")) { json in
+        let units: String = self.getUnits()
+        APIClient.shared.request(api: .getForecastWeather(lat: lat, lon: lon, appId: AppConfig.apiKey, units: units)) { json in
             if let jsonData: [String: Any] = json.rawValue as? [String: Any] {
                 onSuccess(ForecastWeatherModel(from: jsonData))
             } else {
@@ -40,7 +52,8 @@ class WeatherWorker: WeatherWorkerLogic {
     }
     
     func getWeatherByCity(q: String, onSuccess: @escaping (WeatherModel) -> Void, onError: @escaping (CustomError) -> Void) {
-        APIClient.shared.request(api: .getWeatherByCity(q: q, appId: AppConfig.apiKey, units: "metric")) { json in
+        let units: String = self.getUnits()
+        APIClient.shared.request(api: .getWeatherByCity(q: q, appId: AppConfig.apiKey, units: units)) { json in
             if let jsonData: [String: Any] = json.rawValue as? [String: Any] {
                 onSuccess(WeatherModel(from: jsonData))
             } else {

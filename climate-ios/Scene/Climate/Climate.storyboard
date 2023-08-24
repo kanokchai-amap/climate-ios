@@ -96,7 +96,7 @@
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xgf-Re-eLR">
-                                        <rect key="frame" x="16" y="275" width="361" height="236.66666666666663"/>
+                                        <rect key="frame" x="16" y="275" width="361" height="202.66666666666663"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bangkok" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zlm-H5-Y7h">
                                                 <rect key="frame" x="0.0" y="0.0" width="361" height="43"/>
@@ -116,14 +116,8 @@
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lcr-TP-8rb">
-                                                <rect key="frame" x="0.0" y="178.66666666666669" width="361" height="24"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="H: 31°C L:24°C" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRZ-r9-eIv">
-                                                <rect key="frame" x="0.0" y="212.66666666666669" width="361" height="24"/>
+                                                <rect key="frame" x="0.0" y="178.66666666666669" width="361" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -131,7 +125,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mej-lC-wtB">
-                                        <rect key="frame" x="122.33333333333333" y="521.66666666666663" width="148.33333333333337" height="26"/>
+                                        <rect key="frame" x="122.33333333333333" y="487.66666666666669" width="148.33333333333337" height="26.000000000000057"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -179,7 +173,6 @@
                         <outlet property="cityLabel" destination="Zlm-H5-Y7h" id="E6S-bD-rBg"/>
                         <outlet property="contentStackView" destination="xgf-Re-eLR" id="gLp-KP-ppX"/>
                         <outlet property="currentLocationButton" destination="n2o-75-lAJ" id="9ws-vv-1kz"/>
-                        <outlet property="dateTimeLabel" destination="Lcr-TP-8rb" id="obm-IH-y3u"/>
                         <outlet property="degreeLabel" destination="Tj8-oa-JU3" id="3bk-UF-pCu"/>
                         <outlet property="forecastButton" destination="wpM-x4-Weq" id="Ihb-s7-ZYa"/>
                         <outlet property="headerView" destination="2N3-v0-25g" id="dVz-k4-GEI"/>

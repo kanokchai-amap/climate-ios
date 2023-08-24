@@ -22,6 +22,9 @@ class ClimateRouter: BaseRouter, ClimateRoutingLogic, ClimateDataPassing {
     // MARK: Routing
     func routeToForecast() {
         let vc: ForecastViewController = StoryboardScene.Forecast.forecastViewController.instantiate()
+        var destinationStore: ForecastDataStore? = vc.router?.dataStore
+        destinationStore?.lat = dataStore?.lat
+        destinationStore?.lon = dataStore?.lon
         pushViewController(vc)
     }
 }

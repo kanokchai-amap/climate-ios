@@ -45,4 +45,23 @@ enum Climate {
             case alert
         }
     }
+    
+    enum ChangeUnitDegree {
+        struct Request {
+            let isCelsius: Bool
+        }
+        
+        struct Response {}
+        struct ViewModel {}
+    }
+    
+    enum RouteToForecast {
+        struct Request {
+            let lat: Double
+            let lon: Double
+        }
+        
+        struct Response {}
+        struct ViewModel {}
+    }
 }

@@ -9,14 +9,21 @@
 protocol ClimateBusinessLogic {
     func getCurrentWeather(request: Climate.GetWeahterByCurrentLocation.Request)
     func getWeatherByCity(request: Climate.GetWeahterByCity.Request)
+    func changeUnitsDegree(request: Climate.ChangeUnitDegree.Request)
+    func routeToForecast(request: Climate.RouteToForecast.Request)
 }
 
 protocol ClimateDataStore {
+    var lat: Double? { get set }
+    var lon: Double? { get set }
 }
 
 class ClimateInteractor: ClimateBusinessLogic, ClimateDataStore {
     var presenter: ClimatePresentationLogic?
     var worker: WeatherWorkerLogic? = WeatherWorker()
+    
+    var lat: Double?
+    var lon: Double?
     
     //​ MARK: Function
     func getCurrentWeather(request: Climate.GetWeahterByCurrentLocation.Request) {
@@ -41,5 +48,20 @@ class ClimateInteractor: ClimateBusinessLogic, ClimateDataStore {
             let response: Response = Response(result: .failure(error: error))
             self.presenter?.presenterGetWeatherByCity(response: response)
         })
+    }
+    
+    func changeUnitsDegree(request: Climate.ChangeUnitDegree.Request) {
+        typealias Response = Climate.ChangeUnitDegree.Response
+        UserDefaultService.setIsCelsius(request.isCelsius)
+        let response: Response = Response()
+        self.presenter?.presenterChangeUnitDegree(response: response)
+    }
+    
+    func routeToForecast(request: Climate.RouteToForecast.Request) {
+        typealias Response = Climate.RouteToForecast.Response
+        lat = request.lat
+        lon = request.lon
+        let response: Response = Response()
+        self.presenter?.presenterRouteToForecast(response: response)
     }
 }

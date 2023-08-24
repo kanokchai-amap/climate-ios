@@ -13,12 +13,15 @@ class ForecastItemTableViewCell: UITableViewCell {
     @IBOutlet private var backgroudImage: UIImageView!
     @IBOutlet private var cityLabel: UILabel!
     @IBOutlet private var dateTimeLabel: UILabel!
-    @IBOutlet private var weatherLabel: UILabel!
+    @IBOutlet private var weatherImage: UIImageView!
+    @IBOutlet private var humidityLabel: UILabel!
     @IBOutlet private var degreeLabel: UILabel!
     @IBOutlet private var minMaxDegreeLabel: UILabel!
     
     let isCelsius: Bool = unwrapped(UserDefaultService.getIsCelsius(), with: false)
-    
+    var forecastWeatherData: ForecastWeatherModel = ForecastWeatherModel(from: [:])
+    var indexPath: IndexPath = IndexPath()
+
     static var identifier: String {
         return String(describing: self)
     }
@@ -41,13 +44,28 @@ class ForecastItemTableViewCell: UITableViewCell {
         self.selectionStyle = .none
     }
     
-    func setupDataDegree() {
+    func setupData() {
+        let weatherData: WeatherModel = unwrapped(forecastWeatherData.list?[indexPath.row], with: WeatherModel(from: [:]))
+        let cityName: String = unwrapped(forecastWeatherData.city?.name, with: "")
+        
+        let temp: Int = Int(unwrapped(weatherData.main?.temp, with: 0))
+        let temp_max: Int = Int(unwrapped(weatherData.main?.temp_max, with: 0))
+        let temp_min: Int = Int(unwrapped(weatherData.main?.temp_min, with: 0))
+        let humidity: Int = Int(unwrapped(weatherData.main?.humidity, with: 0))
+        let dateTime: String = unwrapped(weatherData.dt_txt, with: "")
+        
+        weatherImage.image = UIImage(systemName: unwrapped(weatherData.weather?.first?.conditionName, with: ""))
+        cityLabel.text = unwrapped(cityName, with: "")
+        dateTimeLabel.text = dateTime
+
         if isCelsius {
-            degreeLabel.text = "30°C"
-            minMaxDegreeLabel.text = "H: 31°C L:24°C"
+            degreeLabel.text = "\(temp)°C"
+            minMaxDegreeLabel.text = "H: \(temp_max)°C, L:\(temp_min)°C"
         } else {
-            degreeLabel.text = "30°F"
-            minMaxDegreeLabel.text = "H: 31°F L:24°F"
+            degreeLabel.text = "\(temp)°F"
+            minMaxDegreeLabel.text = "H: \(temp_max)°F, L:\(temp_min)°F"
         }
+        
+        humidityLabel.text = "Humidity: \(humidity)"
     }
 }

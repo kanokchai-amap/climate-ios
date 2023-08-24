@@ -8,14 +8,20 @@
 
 protocol ForecastBusinessLogic {
     func getForecastWeather(request: Forecast.FiveDaysWeather.Request)
+    func getDataStore(request: Forecast.GetDataStore.Request)
 }
 
 protocol ForecastDataStore {
+    var lat: Double? { get set }
+    var lon: Double? { get set }
 }
 
 class ForecastInteractor: ForecastBusinessLogic, ForecastDataStore {
     var presenter: ForecastPresentationLogic?
     var worker: WeatherWorkerLogic? = WeatherWorker()
+    
+    var lat: Double?
+    var lon: Double?
     
     //​ MARK: Function
     func getForecastWeather(request: Forecast.FiveDaysWeather.Request) {
@@ -29,5 +35,11 @@ class ForecastInteractor: ForecastBusinessLogic, ForecastDataStore {
             let response: Resposne = Resposne(result: .failure(error: error))
             self.presenter?.presenterGetForecastWeather(response: response)
         })
+    }
+    
+    func getDataStore(request: Forecast.GetDataStore.Request) {
+        typealias Response = Forecast.GetDataStore.Response
+        let response: Response = Response(lat: unwrapped(lat, with: 0), lon: unwrapped(lon, with: 0))
+        self.presenter?.presenterGetDataStore(resposne: response)
     }
 }

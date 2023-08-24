@@ -9,6 +9,8 @@
 protocol ClimatePresentationLogic {
     func presenterGetCurrentWeather(response: Climate.GetWeahterByCurrentLocation.Response)
     func presenterGetWeatherByCity(response: Climate.GetWeahterByCity.Response)
+    func presenterChangeUnitDegree(response: Climate.ChangeUnitDegree.Response)
+    func presenterRouteToForecast(response: Climate.RouteToForecast.Response)
 }
 
 class ClimatePresenter: ClimatePresentationLogic {
@@ -45,5 +47,17 @@ class ClimatePresenter: ClimatePresentationLogic {
             viewModel = ViewModel(content: .error(error: viewModelError))
         }
         viewController?.displayGetWeatherByCity(viewModel: viewModel)
+    }
+    
+    func presenterChangeUnitDegree(response: Climate.ChangeUnitDegree.Response) {
+        typealias ViewModel = Climate.ChangeUnitDegree.ViewModel
+        let viewModel: ViewModel = ViewModel()
+        self.viewController?.displayChangeUnitDegree(viewModel: viewModel)
+    }
+    
+    func presenterRouteToForecast(response: Climate.RouteToForecast.Response) {
+        typealias ViewModel = Climate.RouteToForecast.ViewModel
+        let viewModel: ViewModel = ViewModel()
+        self.viewController?.displayRouteToForecast(viewModel: viewModel)
     }
 }

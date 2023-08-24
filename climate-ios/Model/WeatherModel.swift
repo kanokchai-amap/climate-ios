@@ -73,7 +73,7 @@ struct WeatherModel: Codable {
     let timezone, id: Int?
     let name: String?
     let cod: Int?
-    let dtTxt: String?
+    let dt_txt: String?
     
     init(from json: [String: Any]) {
         
@@ -123,7 +123,7 @@ struct WeatherModel: Codable {
         self.id = json["id"] as? Int
         self.name = json["name"] as? String
         self.cod = json["cod"] as? Int
-        self.dtTxt = json["dtTxt"] as? String
+        self.dt_txt = json["dt_txt"] as? String
     }
 }
 
@@ -186,6 +186,27 @@ struct Sys: Codable {
 struct Weather: Codable {
     let id: Int?
     let main, description, icon: String?
+    
+    var conditionName: String {
+        switch unwrapped(id, with: 0) {
+        case 200...232:
+            return "cloud.bolt"
+        case 300...321:
+            return "cloud.drizzle"
+        case 500...531:
+            return "cloud.rain"
+        case 600...622:
+            return "cloud.snow"
+        case 701...781:
+            return "cloud.fog"
+        case 800:
+            return "sun.max"
+        case 801...804:
+            return "cloud.bolt"
+        default:
+            return "cloud"
+        }
+    }
     
     init(from json: [String: Any]) {
         self.id = json["id"] as? Int

@@ -11,6 +11,8 @@ import UIKit
 protocol ClimateDisplayLogic: AnyObject {
     func displayGetCurrentWeather(viewModel: Climate.GetWeahterByCurrentLocation.ViewModel)
     func displayGetWeatherByCity(viewModel: Climate.GetWeahterByCity.ViewModel)
+    func displayChangeUnitDegree(viewModel: Climate.ChangeUnitDegree.ViewModel)
+    func displayRouteToForecast(viewModel: Climate.RouteToForecast.ViewModel)
 }
 
 class ClimateViewController: BaseViewController, ClimateDisplayLogic {
@@ -30,11 +32,11 @@ class ClimateViewController: BaseViewController, ClimateDisplayLogic {
     @IBOutlet private var cityLabel: UILabel!
     @IBOutlet private var degreeLabel: UILabel!
     @IBOutlet private var humidityLabel: UILabel!
-    @IBOutlet private var dateTimeLabel: UILabel!
     @IBOutlet private var minMaxDegreeLabel: UILabel!
     @IBOutlet private var chagneDegreeButton: UIButton!
     
-    var isCelsius: Bool = unwrapped(UserDefaultService.getIsCelsius(), with: false)
+    var isCelsius: Bool = unwrapped(UserDefaultService.getIsCelsius(), with: true)
+    var weatherData: WeatherModel = WeatherModel(from: [:])
     
     // MARK: Object lifecycle
   
@@ -62,7 +64,7 @@ class ClimateViewController: BaseViewController, ClimateDisplayLogic {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        setupDataDegree()
+        getCurrentWeather()
     }
   
     // MARK: Function
@@ -74,16 +76,24 @@ class ClimateViewController: BaseViewController, ClimateDisplayLogic {
         mainLayoutView.addGestureRecognizer(tap)
     }
     
-    private func setupDataDegree() {
-        print(isCelsius)
+    private func setupData() {
+        let temp: Int = Int(unwrapped(weatherData.main?.temp, with: 0))
+        let temp_max: Int = Int(unwrapped(weatherData.main?.temp_max, with: 0))
+        let temp_min: Int = Int(unwrapped(weatherData.main?.temp_min, with: 0))
+        let humidity: Int = Int(unwrapped(weatherData.main?.humidity, with: 0))
+        
+        weatherImage.image = UIImage(systemName: unwrapped(weatherData.weather?.first?.conditionName, with: ""))
+        cityLabel.text = unwrapped(weatherData.name, with: "")
+
         if isCelsius {
-            degreeLabel.text = "30°C"
-            minMaxDegreeLabel.text = "H: 31°C L:24°C"
+            degreeLabel.text = "\(temp)°C"
+            minMaxDegreeLabel.text = "H: \(temp_max)°C, L:\(temp_min)°C"
         } else {
-            degreeLabel.text = "30°F"
-            minMaxDegreeLabel.text = "H: 31°F L:24°F"
+            degreeLabel.text = "\(temp)°F"
+            minMaxDegreeLabel.text = "H: \(temp_max)°F, L:\(temp_min)°F"
         }
-        UserDefaultService.setIsCelsius(isCelsius)
+        
+        humidityLabel.text = "Humidity: \(humidity)"
     }
     
     @IBAction private func tappedCurrentLocation(_ sender: UIButton) {
@@ -91,12 +101,12 @@ class ClimateViewController: BaseViewController, ClimateDisplayLogic {
     }
     
     @IBAction private func tappedForecast(_ sender: UIButton) {
-        self.router?.routeToForecast()
+        routeToForecast()
     }
     
     @IBAction private func tappedChangDegree(_ sender: UIButton) {
         isCelsius = !isCelsius
-        setupDataDegree()
+        changeUnitDegree()
     }
     
     @objc private func tappedBackgroud() {
@@ -112,9 +122,7 @@ extension ClimateViewController: UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if let city: String = textField.text {
-            getWeatherByCity()
-        }
+        getWeatherByCity()
     }
 }
 
@@ -128,8 +136,22 @@ extension ClimateViewController {
     
     func getWeatherByCity() {
         typealias Request = Climate.GetWeahterByCity.Request
-        let request: Request = Request(q: "London")
+        let city: String = unwrapped(searchTextField.text, with: "")
+        let request: Request = Request(q: city)
         interactor?.getWeatherByCity(request: request)
+    }
+    
+    func changeUnitDegree() {
+        typealias Request = Climate.ChangeUnitDegree.Request
+        let request: Request = Request(isCelsius: isCelsius)
+        interactor?.changeUnitsDegree(request: request)
+    }
+    
+    func routeToForecast() {
+        typealias Request = Climate.RouteToForecast.Request
+        let request: Request = Request(lat: 44.34, lon: 10.99)
+        interactor?.routeToForecast(request: request)
+        
     }
 }
 
@@ -141,6 +163,8 @@ extension ClimateViewController {
             self.startLoading()
         case .success(let data):
             self.stopLoading()
+            weatherData = data
+            setupData()
         case .error(let error):
             self.stopLoading()
             DialogView.showDialog(error: error.customError)
@@ -155,11 +179,27 @@ extension ClimateViewController {
             self.startLoading()
         case .success(let data):
             self.stopLoading()
+            weatherData = data
+            setupData()
         case .error(let error):
             self.stopLoading()
             DialogView.showDialog(error: error.customError)
         default:
             break
         }
+    }
+    
+    func displayChangeUnitDegree(viewModel: Climate.ChangeUnitDegree.ViewModel) {
+        if let isEmptyTextFiled: Bool = searchTextField.text?.isEmpty {
+            if isEmptyTextFiled {
+                getCurrentWeather()
+            } else {
+                getWeatherByCity()
+            }
+        }
+    }
+    
+    func displayRouteToForecast(viewModel: Climate.RouteToForecast.ViewModel) {
+        self.router?.routeToForecast()
     }
 }
