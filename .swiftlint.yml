@@ -1,0 +1,95 @@
+included: # paths to include during linting. `--path` is ignored if present.
+    - climate-ios
+  
+excluded:
+    - Pods
+  
+force_cast: warning
+force_try: warning
+shorthand_operator: warning
+file_length:
+    warning: 500
+    error: 2000
+
+opt_in_rules:
+    - class_delegate_protocol
+    - closure_parameter_position
+    - closure_spacing
+    - colon
+    - control_statement
+    - comma
+    - comment_spacing
+    - duplicate_imports
+    - empty_enum_arguments
+    - explicit_type_interface
+    - for_where
+    - force_cast
+    - force_try
+    - force_unwrapping
+    - implicit_getter
+    - leading_whitespace
+    - multiple_closures_with_trailing_closure
+    - no_space_in_method_call
+    - opening_brace
+    - orphaned_doc_comment
+    - private_action
+    - redundant_optional_initialization
+    - return_arrow_whitespace
+    - shorthand_operator
+    - statement_position
+    - todo
+    - trailing_newline
+    - trailing_semicolon
+    - unneeded_break_in_switch
+    - unused_closure_parameter
+    - unused_control_flow_label
+    - unused_declaration
+    - unused_enumerated
+    - unused_optional_binding
+    - valid_ibinspectable
+    - vertical_parameter_alignment
+    - vertical_whitespace
+    - vertical_whitespace_closing_braces
+    - void_return
+    - weak_delegate
+    - yoda_condition
+
+disabled_rules: # rule identifiers to exclude from running
+    - computed_accessors_order
+    - cyclomatic_complexity
+    - function_body_length
+    - function_parameter_count
+    - identifier_name
+    - line_length
+    - mark
+    - nesting
+    - redundant_string_enum_value
+    - trailing_whitespace
+    - type_name
+    - type_body_length
+    - indentation_width
+  
+  
+custom_rules: # Custom rules
+    coalescing_operator:
+        name: "Coalescing operator"
+        message: "Use (unwrapped) function instead of (??)."
+        regex: '((\w+)\s+\?\?\s+(\w+))'
+        severity: warning
+    string_interpolation:
+        name: "String interpolation"
+        message: "Replace the String interpolation with String concatenation."
+        regex: '(\"([^\"]+)\"\s+\+\s+\"([^\"]+)\")'
+        severity: warning
+    ternary_conditional_operator:
+        name: "Ternary conditional operatro"
+        message: "Replace ternary conditional with if-else statements"
+        regex: '((\w+)\s+\?\s+(\w+)\s+\:\s+(\w+))'
+        severity: warning
+    image_name_initialization:
+        included: ".*.swift"
+        name: "Image initialization"
+        regex: 'UIImage\(named: \"[^)]+\)'
+        message: "Use Asset.someImage.image instead"
+        severity: warning
+
