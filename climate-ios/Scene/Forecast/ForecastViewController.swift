@@ -105,7 +105,18 @@ extension ForecastViewController: UITableViewDelegate, UITableViewDataSource {
         guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: HeaderSectionView.identifier) as? HeaderSectionView else {
             return UIView()
         }
-        headerView.headerLabel.text = days[section]
+        
+        let dateTime: String = days[section]
+        let fullTime: DateFormatter = DateFormatter()
+        fullTime.dateFormat = "yyyy-MM-dd"
+        let date: Date = unwrapped(fullTime.date(from: dateTime), with: Date())
+        
+        let dateFormat: DateFormatter = DateFormatter()
+        dateFormat.locale = Language.shared.current.getLocale()
+        dateFormat.dateFormat = "dd/MM/yyyy"
+        let timeStr: String = dateFormat.string(from: date)
+        
+        headerView.headerLabel.text = timeStr
         return headerView
     }
     

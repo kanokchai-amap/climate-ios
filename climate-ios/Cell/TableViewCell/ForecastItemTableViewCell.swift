@@ -56,7 +56,17 @@ class ForecastItemTableViewCell: UITableViewCell {
         
         weatherImage.image = UIImage(systemName: unwrapped(weatherData.weather?.first?.conditionName, with: ""))
         cityLabel.text = unwrapped(cityName, with: "")
-        dateTimeLabel.text = dateTime
+        
+        let fullTime: DateFormatter = DateFormatter()
+        fullTime.dateFormat = "yyyy-MM-dd' 'HH:mm:ss"
+        let date: Date = unwrapped(fullTime.date(from: dateTime), with: Date())
+        
+        let dateFormat: DateFormatter = DateFormatter()
+        dateFormat.locale = Language.shared.current.getLocale()
+        dateFormat.dateFormat = "dd/MM/yyyy, HH:mm"
+        let timeStr: String = dateFormat.string(from: date)
+        
+        dateTimeLabel.text = timeStr
 
         if isCelsius {
             degreeLabel.text = "\(temp)°C"

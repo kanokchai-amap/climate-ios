@@ -1,24 +1,36 @@
 PODS:
   - Alamofire (5.7.1)
+  - netfox (1.21.0)
+  - SwiftDate (7.0.0)
   - SwiftGen (6.6.2)
+  - SwiftLint (0.52.4)
   - SwiftyJSON (5.0.1)
 
 DEPENDENCIES:
   - Alamofire
+  - netfox
+  - SwiftDate
   - SwiftGen
+  - SwiftLint
   - SwiftyJSON
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - netfox
+    - SwiftDate
     - SwiftGen
+    - SwiftLint
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: 0123a34370cb170936ae79a8df46cc62b2edeb88
+  netfox: 9d5cc727fe7576c4c7688a2504618a156b7d44b7
+  SwiftDate: bbc26e26fc8c0c33fbee8c140c5e8a68293a148a
   SwiftGen: 1366a7f71aeef49954ca5a63ba4bef6b0f24138c
+  SwiftLint: 1cc5cd61ba9bacb2194e340aeb47a2a37fda00b3
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
 
-PODFILE CHECKSUM: 3678113beba5c48aea063d646405221095c76833
+PODFILE CHECKSUM: 0b76c29fca41f07619d6b323e76445174549404d
 
 COCOAPODS: 1.12.1
