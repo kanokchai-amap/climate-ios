@@ -150,7 +150,7 @@
 		E23C076BA70925415F490FEDB215DA92 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E43243A2CC34D85F920C936E7CE1B21C /* RequestCompression.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RequestCompression.swift; path = Source/RequestCompression.swift; sourceTree = "<group>"; };
 		E59D53F7B7B608C2C1CF5133527E97BC /* SwiftyJSON.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyJSON.release.xcconfig; sourceTree = "<group>"; };
-		E6335EBF6CFC03F66F86342D69A28E8C /* Pods-climate-ios */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-climate-ios"; path = Pods_climate_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E6335EBF6CFC03F66F86342D69A28E8C /* Pods_climate_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_climate_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E64FD3083397AAFC0EA9B91E39436D73 /* SessionDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionDelegate.swift; path = Source/SessionDelegate.swift; sourceTree = "<group>"; };
 		E6A4E0B9A55E2A2F60CC072B85EC8429 /* URLRequest+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "URLRequest+Alamofire.swift"; path = "Source/URLRequest+Alamofire.swift"; sourceTree = "<group>"; };
 		E751F650DA82A3171F51DE01AC0B2747 /* Result+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Result+Alamofire.swift"; path = "Source/Result+Alamofire.swift"; sourceTree = "<group>"; };
@@ -349,7 +349,7 @@
 			isa = PBXGroup;
 			children = (
 				5D797E9A5C5782CE845840781FA1CC81 /* Alamofire.framework */,
-				E6335EBF6CFC03F66F86342D69A28E8C /* Pods-climate-ios */,
+				E6335EBF6CFC03F66F86342D69A28E8C /* Pods_climate_ios.framework */,
 				E23C076BA70925415F490FEDB215DA92 /* SwiftyJSON.framework */,
 			);
 			name = Products;
@@ -418,7 +418,7 @@
 			);
 			name = "Pods-climate-ios";
 			productName = Pods_climate_ios;
-			productReference = E6335EBF6CFC03F66F86342D69A28E8C /* Pods-climate-ios */;
+			productReference = E6335EBF6CFC03F66F86342D69A28E8C /* Pods_climate_ios.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		D118A6A04828FD3CDA8640CD2B6796D2 /* SwiftyJSON */ = {

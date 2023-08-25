@@ -9,5 +9,8 @@ target 'climate-ios' do
   pod 'Alamofire'
   pod 'SwiftyJSON'
   pod 'SwiftGen'
+  pod 'netfox'
+  pod 'SwiftDate'
+  pod 'SwiftLint'
 
 end
